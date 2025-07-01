@@ -1,3 +1,4 @@
+// BMI Calculator using Metric and Imperial units
 package bmicalculator;
 
 import java.util.Scanner;
@@ -6,6 +7,8 @@ import java.util.Locale;
 public class BmiCalculator{
 
     public static void main(String[] args) {
+	    // Initialize Scanner and set Locale for decimal input
+	    
         Scanner scanner = new Scanner(System.in);
         scanner.useLocale(Locale.US);
 
@@ -14,15 +17,20 @@ public class BmiCalculator{
         do {
         	
             //All Our code
+		// Ask user to select input unit (1 for Metric, 2 for Imperial)
             int unitChoice = getUnitChoice(scanner);
+        // Get weight based on selected unit
+        // Metric: kg (10–600), Imperial: lbs (22–1300)
             double weight = (unitChoice == 1)? getValidInput(scanner,"Enter your weight in kilograms: ", 10, 600)
                     : getValidInput(scanner, "Enter your weight in pounds", 22, 1300);
             double height = (unitChoice == 1)? getValidInput(scanner, "Enter your height in meters:", 0.5, 2.5)
                     :getValidInput(scanner,"Enter your height in inches",20,100);
-            double bmi = calculateBMI(unitChoice, weight,height);
+           // Calculate BMI based on unit system
+		double bmi = calculateBMI(unitChoice, weight,height);
             System.out.println("Your BMI is " + bmi+" category: "+displayCategory(bmi));
             
-            repeat=askToRepeat(scanner);
+          // Ask user whether to repeat the calculation
+		repeat=askToRepeat(scanner);
             //repeat = askToRepeat(scanner);
             System.out.println();
 
@@ -30,8 +38,11 @@ public class BmiCalculator{
 
     }
 
-    //Unit - Metric and Imperial
-    public static int getUnitChoice(Scanner scanner){
+    //Unit - Metric and Imperial numbers.add(i);
+}
+   // Prompts the user to choose between Metric and Imperial units
+
+public static int getUnitChoice(Scanner scanner){
         int choice;
 
 
@@ -59,7 +70,9 @@ public class BmiCalculator{
         return choice;
     }
    
-    public static double getValidInput(Scanner scanner, String prompt, double min, double max) {
+  // Validates input within a given numeric range
+
+public static double getValidInput(Scanner scanner, String prompt, double min, double max) {
         double value;
         while(true){
             System.out.println(prompt);
@@ -88,7 +101,9 @@ public class BmiCalculator{
     }
 
 
-    public static double calculateBMI(int unitChoice, double weight, double height) {
+   // Calculates BMI based on unit system
+
+public static double calculateBMI(int unitChoice, double weight, double height) {
         double totalBMI;
 
         if(unitChoice == 1) {
@@ -99,6 +114,7 @@ public class BmiCalculator{
         return totalBMI;
 
     }
+// Returns a health category string based on BMI value
     public static String displayCategory(double bmi) {
     	if(bmi<16.0) {return "Severely Underweight";}
     	else if(bmi>=16&&bmi<=18.4) {return "Underweight";}
@@ -110,6 +126,7 @@ public class BmiCalculator{
     
     }
  
+// Asks user if they wish to repeat the calculation
     public static char askToRepeat(Scanner scanner) {
         System.out.print("Would you like to calculate again? (Y/N): ");
         char answer;
