@@ -1,5 +1,5 @@
 # BmiCalculator
-This is a small program that helps someone calculate their BMI (Body Mass Index) based on their weight and height. Its Function is to ;
+This is a simple java program that helps someone calculate their BMI (Body Mass Index) based on their weight and height. Its Function is to :
 
 Asks the user to choose a unit system — either:
 Metric (kilograms and meters), or
